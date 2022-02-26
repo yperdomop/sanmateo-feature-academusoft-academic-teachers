@@ -1,0 +1,38 @@
+.bg-orange {
+    background-color: #f0a67a;
+}
+
+.table__header-text--normal {
+    font-size: 14px;
+}
+
+.table__body-text--normal {
+    font-size: 12px;
+}
+
+
+.icon--orange {
+    color: #f0a67a;
+}
+
+.icon--red {
+    color: #ff5983;
+}
+
+.icon--green {
+    color: #1b926c;
+}
+
+
+@media print {
+    .no-print{
+      display:none;
+    }
+    body {
+        zoom: .8
+    }
+}
+
+.cursor--pointer {
+    cursor: pointer;
+}
