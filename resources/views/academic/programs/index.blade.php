@@ -12,7 +12,7 @@
 
         <div class="row mb-3">
             <div class="col">
-                <a class="btn btn-success pull-right" href="{{route('administador.programs.create')}}"><i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Crear</a>
+                <a class="btn btn-success pull-right" href="{{route('administrador.programs.create')}}"><i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Crear</a>
             </div>
         </div>
 

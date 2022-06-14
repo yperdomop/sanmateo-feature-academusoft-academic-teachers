@@ -25,7 +25,7 @@ use App\Http\Livewire\Academic\Administrator\Programs\DetailProgram;
 use App\Http\Livewire\Academic\Administrator\Programs\EditProgram;
 use App\Http\Livewire\Academic\Administrator\Programs\AssociateUnit;
 use App\Http\Livewire\Academic\Administrator\Programs\EditUnitProgram;
-use App\Http\Controllers\General\ProgramsController;
+use App\Http\Controllers\Academic\Administrator\ProgramsController;
 
 Route::group(['prefix' => 'docente', 'middleware' => ['web']], function () {
     Route::get('mis-clases', [GetClasses::class, '__invoke'])->name('teacher.getClass');
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'docente', 'middleware' => ['web']], function () {
 
 
 Route::group(['prefix' => 'administrador', 'middleware' => ['web']], function () {
-    Route::get('/', function() {
+    Route::get('/', function () {
         dump('menu-here');
     })->name('administrator.index');
     Route::get('tipo-calificaciones', [ScoreType::class, '__invoke'])->name('administrator.scoreType');
@@ -66,5 +66,6 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['web']], function ()
     Route::get('programas/{programId}/unidad/{unitProgramId}', [EditUnitProgram::class, '__invoke'])->name('administrator.editunitprogram');
 
     Route::get('programas1', [ProgramsController::class, 'index',])->name('administrador.programs.index');
-    Route::get('programas1/crear', [ProgramsController::class, 'create'])->name('administador.programs.create');
+    Route::get('programas1/crear', [ProgramsController::class, 'create'])->name('administrador.programs.create');
+    Route::post('programas1/crear', [ProgramsController::class, 'store'])->name('administrador.programs.store');
 });
