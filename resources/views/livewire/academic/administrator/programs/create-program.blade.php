@@ -19,13 +19,13 @@
             <div class="col">
                 <div class="form-group">
                     <label for="IcfesCode">Código ICFES</label>
-                    <input wire:model.defer="IcfesCode" type="text" class="form-control">
+                    <input name="IcfesCode" type="text" class="form-control">
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="approvalDate">Fecha aprobación ICFES</label>
-                    <input wire:model.defer="approvalDate" type="date" class="form-control" value="{{$approvalDate}}">
+                    <input name="approvalDate" type="date" class="form-control" value="{{$approvalDate}}">
                 </div>
             </div>
             <div class="col">
@@ -132,5 +132,5 @@
             <input type="submit" class="btn btn-success" value="Guardar">
         </div>
     </form>
-    
+
 </div>

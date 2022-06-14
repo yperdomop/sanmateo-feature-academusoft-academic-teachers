@@ -2,6 +2,7 @@
 
 namespace App\Models\Academic;
 
+use App\Models\academic\TipoCubrimientosNies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class Programa extends Model
         'prog_abreviatura',
     ];
 
+    //funcion join
     public function unidadPrograma($prog_id)
     {
         return $this->select('academico.unidadprograma.unpr_id', 'unid_nombre', 'unpr_esfacultad', 'unpr_relacion', 'cige_nombre', 'tcsn_descripcion')
@@ -43,5 +45,15 @@ class Programa extends Model
         ->where('academico.programa.prog_id', '=', $prog_id)->get()->toArray();
     }
 
-    
+    //uno a muchos
+    public function unidadPrograma1()
+    {
+        return $this->hasMany(UnidadPrograma::class, 'prog_id', 'prog_id');
+    }
+
+    //uno a muchos inverso
+    public function metodologia()
+    {
+        return $this->belongsTo(UnidadPrograma::class, 'meto_id', 'meto_id');
+    }
 }

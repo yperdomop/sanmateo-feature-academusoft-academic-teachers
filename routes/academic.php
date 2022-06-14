@@ -25,6 +25,7 @@ use App\Http\Livewire\Academic\Administrator\Programs\DetailProgram;
 use App\Http\Livewire\Academic\Administrator\Programs\EditProgram;
 use App\Http\Livewire\Academic\Administrator\Programs\AssociateUnit;
 use App\Http\Livewire\Academic\Administrator\Programs\EditUnitProgram;
+use App\Http\Controllers\General\ProgramsController;
 
 Route::group(['prefix' => 'docente', 'middleware' => ['web']], function () {
     Route::get('mis-clases', [GetClasses::class, '__invoke'])->name('teacher.getClass');
@@ -63,4 +64,7 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['web']], function ()
     Route::get('programas/{programId}/editar', [EditProgram::class, '__invoke'])->name('administrator.editProgram');
     Route::get('programas/{programId}/unidad', [AssociateUnit::class, '__invoke'])->name('administrator.associateUnit');
     Route::get('programas/{programId}/unidad/{unitProgramId}', [EditUnitProgram::class, '__invoke'])->name('administrator.editunitprogram');
+
+    Route::get('programas1', [ProgramsController::class, 'index',])->name('administrador.programs.index');
+    Route::get('programas1/crear', [ProgramsController::class, 'create'])->name('administador.programs.create');
 });

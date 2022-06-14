@@ -27,4 +27,10 @@ class Unidad extends Model
         'unid_asociamateriadirecta',
         'unid_regional',
     ];
+
+    //uno a muchos
+    public function unidadPrograma()
+    {
+        return $this->hasMany(UnidadPrograma::class, 'unid_id', 'unid_id');
+    }
 }

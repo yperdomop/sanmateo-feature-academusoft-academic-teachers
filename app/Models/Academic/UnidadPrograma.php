@@ -21,4 +21,22 @@ class UnidadPrograma extends Model
         'unpr_registradopor',
         'unpr_esfacultad',
     ];
+
+    //uno a muchos inverso
+    public function programa()
+    {
+        return $this->belongsTo(Programa::class, 'prog_id', 'prog_id');
+
+    }
+    public function unidad()
+    {
+        return $this->belongsTo(Unidad::class, 'unid_id', 'unid_id');
+
+    }
+
+    //muchos a muchos
+    public function cubrimientos()
+    {
+        return $this->belongsToMany(TipoCubrimientosNies::class, 'academico.cubrimientoprograma', 'unpr_id', 'tcsn_id')->withPivot('meto_id');
+    }
 }

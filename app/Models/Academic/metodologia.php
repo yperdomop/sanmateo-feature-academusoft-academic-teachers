@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class metodologia extends Model
 {
-    
+
         public $table = 'academico.metodologia';
         protected $primaryKey = 'meto_id';
         public $timestamps = false;
@@ -19,8 +19,8 @@ class metodologia extends Model
             'meto_activo',
 
         ];
-
-        public function tipoMetologia() {
+        //uno a muchos
+        public function programa() {
             return $this->hasMany(Programa::class, 'meto_id', 'meto_id');
         }
 }
