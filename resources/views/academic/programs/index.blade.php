@@ -2,6 +2,11 @@
 
 @section('content')
     <div>
+        @if (session('info'))
+            <div class="alert alert-success" role="alert">
+                {{ session('info') }}
+            </div>
+        @endif
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
@@ -12,7 +17,8 @@
 
         <div class="row mb-3">
             <div class="col">
-                <a class="btn btn-success pull-right" href="{{route('administrador.programs.create')}}"><i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Crear</a>
+                <a class="btn btn-success pull-right" href="{{ route('administrador.programs.create') }}"><i
+                        class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Crear</a>
             </div>
         </div>
 
@@ -41,7 +47,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col" class="col-9">Nombre del programa</th>
-                                <th scope="col text-center">Acciones</th>
+                                <th scope="col" class="col-3">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,9 +55,19 @@
                                 <tr>
 
                                     <td>{{ $program->prog_nombre }}</td>
-                                    <td class="text-center">
-                                        <a class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; Continuar</a>
-                                        <a class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp; Eliminar</a>
+                                    <td class="text-center d-flex">
+                                        <a class="btn btn-primary"
+                                            href="{{ route('administrador.programs.show', $program) }}">
+                                            <i class="fa fa-arrow-right" aria-hidden="true"></i>&nbsp; Continuar</a>
+                                        &nbsp;
+                                        <form method="post"
+                                            action="{{ route('administrador.programs.destroy', $program) }}"
+                                            onSubmit="return confirm('Seguro desea eliminar?')">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"
+                                                    aria-hidden="true"> </i>
+                                                Eliminar</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

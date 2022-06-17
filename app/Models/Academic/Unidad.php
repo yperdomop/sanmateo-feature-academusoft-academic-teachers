@@ -4,6 +4,7 @@ namespace App\Models\Academic;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\General\CiudadGeneral;
 
 class Unidad extends Model
 {
@@ -32,5 +33,10 @@ class Unidad extends Model
     public function unidadPrograma()
     {
         return $this->hasMany(UnidadPrograma::class, 'unid_id', 'unid_id');
+    }
+    //uno a muchos inverso
+    public function ciudad()
+    {
+        return $this->belongsTo(CiudadGeneral::class, 'cige_id', 'cige_id');
     }
 }

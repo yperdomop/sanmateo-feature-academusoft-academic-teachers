@@ -19,13 +19,8 @@ use \App\Http\Livewire\Academic\Teacher\GetStudentScore;
 use App\Http\Livewire\Academic\Teacher\SetStudentScore;
 use Illuminate\Support\Facades\Route;
 //Rutas controladores programas
-use App\Http\Livewire\Academic\Administrator\Programs\ListProgram;
-use App\Http\Livewire\Academic\Administrator\Programs\CreateProgram;
-use App\Http\Livewire\Academic\Administrator\Programs\DetailProgram;
-use App\Http\Livewire\Academic\Administrator\Programs\EditProgram;
-use App\Http\Livewire\Academic\Administrator\Programs\AssociateUnit;
-use App\Http\Livewire\Academic\Administrator\Programs\EditUnitProgram;
 use App\Http\Controllers\Academic\Administrator\ProgramsController;
+use App\Http\Controllers\Academic\Administrator\UnitProgramsController;
 
 Route::group(['prefix' => 'docente', 'middleware' => ['web']], function () {
     Route::get('mis-clases', [GetClasses::class, '__invoke'])->name('teacher.getClass');
@@ -58,14 +53,16 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['web']], function ()
     Route::get('calificar/calificar-grupo', [AssignGroupScore::class, '__invoke'])->name('administrator.assignScore');
 
     //Rutas programas
-    Route::get('programas', [ListProgram::class, '__invoke'])->name('administrator.listProgram');
-    Route::get('programas/crear', [CreateProgram::class, '__invoke'])->name('administrator.createProgram');
-    Route::get('programas/{programId}', [DetailProgram::class, '__invoke'])->name('administrator.detailProgram');
-    Route::get('programas/{programId}/editar', [EditProgram::class, '__invoke'])->name('administrator.editProgram');
-    Route::get('programas/{programId}/unidad', [AssociateUnit::class, '__invoke'])->name('administrator.associateUnit');
-    Route::get('programas/{programId}/unidad/{unitProgramId}', [EditUnitProgram::class, '__invoke'])->name('administrator.editunitprogram');
-
-    Route::get('programas1', [ProgramsController::class, 'index',])->name('administrador.programs.index');
-    Route::get('programas1/crear', [ProgramsController::class, 'create'])->name('administrador.programs.create');
-    Route::post('programas1/crear', [ProgramsController::class, 'store'])->name('administrador.programs.store');
+    Route::get('programas', [ProgramsController::class, 'index',])->name('administrador.programs.index');
+    Route::get('programas/crear', [ProgramsController::class, 'create'])->name('administrador.programs.create');
+    Route::post('programas/crear', [ProgramsController::class, 'store'])->name('administrador.programs.store');
+    Route::get('programas/{programa}', [ProgramsController::class, 'show'])->name('administrador.programs.show');
+    Route::get('programas/{programa}/editar', [ProgramsController::class, 'edit'])->name('administrador.programs.edit');
+    Route::post('programas/{programa}/editar', [ProgramsController::class, 'update'])->name('administrador.programs.update');
+    Route::post('programas/{programa}', [ProgramsController::class, 'destroy'])->name('administrador.programs.destroy');
+    Route::get('programas/{programa}/unidad', [UnitProgramsController::class, 'create'])->name('administrador.unitprograms.create');
+    Route::post('programas/{programa}/unidad', [UnitProgramsController::class, 'store'])->name('administrador.unitprograms.store');
+    Route::get('programas/{programa}/unidad/{unidadPrograma}', [UnitProgramsController::class, 'edit'])->name('administrador.unitprograms.edit');
+    Route::post('programas/{programa}/unidad/{unidadPrograma}', [UnitProgramsController::class, 'update'])->name('administrador.unitprograms.update');
+    Route::post('programas/{programa}/unidad/{unidadPrograma}/eliminar', [UnitProgramsController::class, 'destroy'])->name('administrador.unitprograms.destroy');
 });

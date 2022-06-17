@@ -10,7 +10,7 @@ class TipoPeriodoAcademico extends Model
     public $table = 'academico.tipoPeriodoAcademico';
     protected $primaryKey = 'TPPA_ID';
     public $timestamps = false;
-    protected $fillable=
+    protected $fillable =
     [
 
         'tppa_descripcion',
@@ -19,7 +19,8 @@ class TipoPeriodoAcademico extends Model
         'tppa_duracionsemanas',
 
     ];
-    /* public function typeAcademyPeriod() {
+    public function Programa()
+    {
         return $this->hasMany(Programa::class, 'tppa_id', 'tppa_id');
-} */
+    }
 }

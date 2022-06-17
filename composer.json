@@ -14,10 +14,11 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
+        "laravelcollective/html": "^6.3",
         "livewire/livewire": "^2.5",
+        "phpoffice/phpspreadsheet": "^1.19",
         "realrashid/sweet-alert": "^4.1",
         "yajra/laravel-datatables-oracle": "^9.18",
-        "phpoffice/phpspreadsheet": "^1.19",
         "yajra/laravel-oci8": "^8"
     },
     "require-dev": {
