@@ -16,6 +16,7 @@ class Programa extends Model
     protected $dates = [
         'prog_fechaaprobacionicfes'
     ];
+
     protected $fillable = [
         'prog_codigoicfes',
         'prog_numperiodos',
@@ -53,6 +54,11 @@ class Programa extends Model
     public function unidadPrograma1()
     {
         return $this->hasMany(UnidadPrograma::class, 'prog_id', 'prog_id');
+    }
+
+    public function pensums()
+    {
+        return $this->hasMany(Pensum::class, 'prog_id', 'prog_id');
     }
 
     //uno a muchos inverso

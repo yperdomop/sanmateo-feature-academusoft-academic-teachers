@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 //Rutas controladores programas
 use App\Http\Controllers\Academic\Administrator\ProgramsController;
 use App\Http\Controllers\Academic\Administrator\UnitProgramsController;
+use App\Http\Controllers\Academic\Administrator\PensumsController;
+//Rutas contraladores calificaciones
+use App\Http\Controllers\Academic\Score\Close\HomeController;
 
 Route::group(['prefix' => 'docente', 'middleware' => ['web']], function () {
     Route::get('mis-clases', [GetClasses::class, '__invoke'])->name('teacher.getClass');
@@ -65,4 +68,11 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['web']], function ()
     Route::get('programas/{programa}/unidad/{unidadPrograma}', [UnitProgramsController::class, 'edit'])->name('administrador.unitprograms.edit');
     Route::post('programas/{programa}/unidad/{unidadPrograma}', [UnitProgramsController::class, 'update'])->name('administrador.unitprograms.update');
     Route::post('programas/{programa}/unidad/{unidadPrograma}/eliminar', [UnitProgramsController::class, 'destroy'])->name('administrador.unitprograms.destroy');
+    //Rutas pensum
+    Route::get('pensum', [PensumsController::class, 'index'])->name('administrador.pensum');
+});
+
+//rutas calificaciones
+Route::group(['prefix' => 'calificaciones', 'middleware' => ['web']], function () {
+    Route::get('cierres', [HomeController::class, 'index'])->name('calificaciones.cierres');
 });
