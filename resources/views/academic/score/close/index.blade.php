@@ -10,7 +10,7 @@
             </ol>
         </nav>
         <div class="row d-grid">
-            <a class="m-1 col btn btn-light border" href=""> Cerrar periodo </a>
+            <a class="m-1 col btn btn-light border" href="{{route('calificaciones.cierres.periodo')}}"> Cerrar periodo </a>
             <a class="m-1 col btn btn-light border" href=""> Cerrar año de internado </a>
             <a class="m-1 col btn btn-light border" href=""> Cerrar periodo académico por grupo </a>
             <a class="m-1 col btn btn-light border" href=""> Cerrar periodo estudiante </a>

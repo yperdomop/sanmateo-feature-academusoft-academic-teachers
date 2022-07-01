@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TipoPeriodoAcademico extends Model
 {
     public $table = 'academico.tipoPeriodoAcademico';
-    protected $primaryKey = 'TPPA_ID';
+    protected $primaryKey = 'tppa_id';
     public $timestamps = false;
     protected $fillable =
     [
