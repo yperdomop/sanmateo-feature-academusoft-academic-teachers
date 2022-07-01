@@ -12,7 +12,6 @@ class Unidad extends Model
     protected $primaryKey = 'unid_id';
     public $timestamps = false;
     protected $fillable = [
-        'unid_id',
         'unid_nombre',
         'unid_registradopor',
         'unid_fechacambio',
@@ -38,5 +37,11 @@ class Unidad extends Model
     public function ciudad()
     {
         return $this->belongsTo(CiudadGeneral::class, 'cige_id', 'cige_id');
+    }
+
+    //muchos a muchos
+    public function periodos()
+    {
+        return $this->belongsToMany(PeriodoUniversidad::class, 'academico.periodouniversidadunidad', 'unid_id', 'peun_id');
     }
 }

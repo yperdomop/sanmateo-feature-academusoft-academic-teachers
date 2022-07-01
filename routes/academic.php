@@ -23,7 +23,7 @@ use App\Http\Controllers\Academic\Administrator\ProgramsController;
 use App\Http\Controllers\Academic\Administrator\UnitProgramsController;
 use App\Http\Controllers\Academic\Administrator\PensumsController;
 //Rutas contraladores calificaciones
-use App\Http\Controllers\Academic\Score\Close\HomeController;
+use App\Http\Controllers\Academic\Score\Close\CierresController;
 
 Route::group(['prefix' => 'docente', 'middleware' => ['web']], function () {
     Route::get('mis-clases', [GetClasses::class, '__invoke'])->name('teacher.getClass');
@@ -74,5 +74,6 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['web']], function ()
 
 //rutas calificaciones
 Route::group(['prefix' => 'calificaciones', 'middleware' => ['web']], function () {
-    Route::get('cierres', [HomeController::class, 'index'])->name('calificaciones.cierres');
+    Route::get('cierres', [CierresController::class, 'index'])->name('calificaciones.cierres');
+    Route::get('cierres/periodo', [CierresController::class, 'period'])->name('calificaciones.cierres.periodo');
 });
